@@ -1,5 +1,5 @@
 export const viewport = {
-  themeColor: '#ffffff',
+  themeColor: '#fafafa',
 };
 
 export const metadata = {
@@ -108,7 +108,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#fafafa" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=JetBrains+Mono:wght@100;500&display=swap" rel="stylesheet" />
