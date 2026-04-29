@@ -517,6 +517,10 @@
     margin-bottom: calc(var(--spacing) * 10);
   }
 
+  .mb-12 {
+    margin-bottom: calc(var(--spacing) * 12);
+  }
+
   .block {
     display: block;
   }
@@ -607,6 +611,10 @@
 
   .w-48 {
     width: calc(var(--spacing) * 48);
+  }
+
+  .w-64 {
+    width: calc(var(--spacing) * 64);
   }
 
   .w-\[1px\] {
@@ -1338,6 +1346,12 @@
   @media (min-width: 48rem) {
     .md\:w-56 {
       width: calc(var(--spacing) * 56);
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .md\:w-96 {
+      width: calc(var(--spacing) * 96);
     }
   }
 
