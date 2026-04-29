@@ -22,8 +22,9 @@ const Navbar = memo(function Navbar({ menuOpen, toggleMenu }) {
 								alt="logo"
 								width={96}
 								height={40}
-								className="w-24 logo-in h-auto"
-								style={{ height: "auto" }}
+								className="logo-in"
+								style={{ width: '6rem', height: 'auto' }}
+								unoptimized
 								priority
 							/>
 						</a>
@@ -52,8 +53,9 @@ const Navbar = memo(function Navbar({ menuOpen, toggleMenu }) {
 								alt="logo"
 								width={80}
 								height={32}
-								className="w-20 logo-in h-auto"
-								style={{ height: "auto" }}
+								className="logo-in"
+								style={{ width: '5rem', height: 'auto' }}
+								unoptimized
 							/>
 						</a>
 					</div>

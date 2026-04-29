@@ -46,10 +46,12 @@ function Preloader({ isLoading }) {
                     alt: "Loading logo",
                     width: 400,
                     height: 100,
-                    className: "w-64 md:w-96 mb-12 h-auto",
+                    className: "mb-12",
                     style: {
-                        height: "auto"
+                        width: 'clamp(16rem, 40vw, 24rem)',
+                        height: 'auto'
                     },
+                    unoptimized: true,
                     priority: true
                 }, void 0, false, {
                     fileName: "[project]/components/Preloader.jsx",
@@ -89,12 +91,12 @@ function Preloader({ isLoading }) {
                             children: letter
                         }, i, false, {
                             fileName: "[project]/components/Preloader.jsx",
-                            lineNumber: 34,
+                            lineNumber: 35,
                             columnNumber: 9
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/components/Preloader.jsx",
-                    lineNumber: 31,
+                    lineNumber: 32,
                     columnNumber: 6
                 }, this)
             ]
@@ -193,10 +195,12 @@ const Navbar = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f
                                     alt: "logo",
                                     width: 96,
                                     height: 40,
-                                    className: "w-24 logo-in h-auto",
+                                    className: "logo-in",
                                     style: {
-                                        height: "auto"
+                                        width: '6rem',
+                                        height: 'auto'
                                     },
+                                    unoptimized: true,
                                     priority: true
                                 }, void 0, false, {
                                     fileName: "[project]/components/Navbar.jsx",
@@ -228,17 +232,17 @@ const Navbar = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f
                                         children: item
                                     }, void 0, false, {
                                         fileName: "[project]/components/Navbar.jsx",
-                                        lineNumber: 35,
+                                        lineNumber: 36,
                                         columnNumber: 10
                                     }, this)
                                 }, item, false, {
                                     fileName: "[project]/components/Navbar.jsx",
-                                    lineNumber: 34,
+                                    lineNumber: 35,
                                     columnNumber: 9
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/Navbar.jsx",
-                            lineNumber: 31,
+                            lineNumber: 32,
                             columnNumber: 6
                         }, this)
                     ]
@@ -260,23 +264,25 @@ const Navbar = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f
                                     alt: "logo",
                                     width: 80,
                                     height: 32,
-                                    className: "w-20 logo-in h-auto",
+                                    className: "logo-in",
                                     style: {
-                                        height: "auto"
-                                    }
+                                        width: '5rem',
+                                        height: 'auto'
+                                    },
+                                    unoptimized: true
                                 }, void 0, false, {
                                     fileName: "[project]/components/Navbar.jsx",
-                                    lineNumber: 50,
+                                    lineNumber: 51,
                                     columnNumber: 8
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Navbar.jsx",
-                                lineNumber: 49,
+                                lineNumber: 50,
                                 columnNumber: 7
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/Navbar.jsx",
-                            lineNumber: 48,
+                            lineNumber: 49,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -287,27 +293,27 @@ const Navbar = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f
                                     className: `w-full h-0.5 bg-black transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[11px]" : ""}`
                                 }, void 0, false, {
                                     fileName: "[project]/components/Navbar.jsx",
-                                    lineNumber: 63,
+                                    lineNumber: 65,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: `w-full h-0.5 bg-black transition-all duration-300 ${menuOpen ? "opacity-0" : "group-hover:translate-x-1"}`
                                 }, void 0, false, {
                                     fileName: "[project]/components/Navbar.jsx",
-                                    lineNumber: 65,
+                                    lineNumber: 67,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: `w-full h-0.5 bg-black transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[11px]" : ""}`
                                 }, void 0, false, {
                                     fileName: "[project]/components/Navbar.jsx",
-                                    lineNumber: 67,
+                                    lineNumber: 69,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Navbar.jsx",
-                            lineNumber: 60,
+                            lineNumber: 62,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -327,23 +333,23 @@ const Navbar = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f
                                         children: item
                                     }, void 0, false, {
                                         fileName: "[project]/components/Navbar.jsx",
-                                        lineNumber: 77,
+                                        lineNumber: 79,
                                         columnNumber: 10
                                     }, this)
                                 }, item, false, {
                                     fileName: "[project]/components/Navbar.jsx",
-                                    lineNumber: 74,
+                                    lineNumber: 76,
                                     columnNumber: 9
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/Navbar.jsx",
-                            lineNumber: 70,
+                            lineNumber: 72,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/Navbar.jsx",
-                    lineNumber: 45,
+                    lineNumber: 46,
                     columnNumber: 5
                 }, this)
             ]
@@ -1268,7 +1274,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$imag
 function Footer() {
     const linkClass = "text-black no-underline transition-all duration-300 hover:text-gray-500 hover:underline hover:underline-offset-8 decoration-gray-400";
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
-        className: "py-12 md:h-48 flex flex-col justify-center items-center bg-white/30 backdrop-blur-sm mt-10",
+        className: "py-12 flex flex-col justify-center items-center bg-white/30 backdrop-blur-sm mt-10 gap-4",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
                 className: "mb-8 flex flex-col items-center gap-8",
@@ -1281,10 +1287,12 @@ function Footer() {
                             alt: "Logo",
                             width: 192,
                             height: 64,
-                            className: "w-64 md:w-80 h-auto",
+                            className: "",
                             style: {
-                                height: "auto"
-                            }
+                                width: 'clamp(16rem, 25vw, 20rem)',
+                                height: 'auto'
+                            },
+                            unoptimized: true
                         }, void 0, false, {
                             fileName: "[project]/components/Footer.jsx",
                             lineNumber: 15,
@@ -1310,17 +1318,17 @@ function Footer() {
                                     children: item
                                 }, void 0, false, {
                                     fileName: "[project]/components/Footer.jsx",
-                                    lineNumber: 28,
+                                    lineNumber: 29,
                                     columnNumber: 9
                                 }, this)
                             }, item, false, {
                                 fileName: "[project]/components/Footer.jsx",
-                                lineNumber: 27,
+                                lineNumber: 28,
                                 columnNumber: 8
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/Footer.jsx",
-                        lineNumber: 24,
+                        lineNumber: 25,
                         columnNumber: 5
                     }, this)
                 ]
@@ -1338,7 +1346,7 @@ function Footer() {
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Footer.jsx",
-                lineNumber: 38,
+                lineNumber: 39,
                 columnNumber: 4
             }, this)
         ]

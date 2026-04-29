@@ -7,7 +7,7 @@ export default function Footer() {
 		"text-black no-underline transition-all duration-300 hover:text-gray-500 hover:underline hover:underline-offset-8 decoration-gray-400";
 
 	return (
-		<footer className="py-12 md:h-48 flex flex-col justify-center items-center bg-white/30 backdrop-blur-sm mt-10">
+		<footer className="py-12 flex flex-col justify-center items-center bg-white/30 backdrop-blur-sm mt-10 gap-4">
 			<nav className="mb-8 flex flex-col items-center gap-8">
 				<a
 					href="#profile"
@@ -17,8 +17,9 @@ export default function Footer() {
 								alt="Logo"
 								width={192}
 								height={64}
-								className="w-64 md:w-80 h-auto"
-								style={{ height: "auto" }}
+								className=""
+								style={{ width: 'clamp(16rem, 25vw, 20rem)', height: 'auto' }}
+								unoptimized
 							/>
 				</a>
 				<ul className="flex flex-wrap justify-center gap-6 md:gap-12 list-none text-lg md:text-xl">

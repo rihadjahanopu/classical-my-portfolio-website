@@ -24,8 +24,9 @@ export default function Preloader({ isLoading }) {
 						alt="Loading logo"
 						width={400}
 						height={100}
-						className="w-64 md:w-96 mb-12 h-auto"
-						style={{ height: "auto" }}
+						className="mb-12"
+						style={{ width: 'clamp(16rem, 40vw, 24rem)', height: 'auto' }}
+						unoptimized
 						priority
 					/>
 					<motion.div className="flex gap-1">
