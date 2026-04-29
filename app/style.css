@@ -2,11 +2,33 @@
 
 html,
 body {
-	font-family: "Poppins", sans-serif;
+	font-family: var(--font-poppins), sans-serif;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	background-color: #fafafa;
+	scroll-behavior: auto !important;
+	overflow-x: hidden;
+}
+
+html.lenis {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+	pointer-events: none;
 }
 
 /* Premium Background Effects */
@@ -64,5 +86,50 @@ body {
 ::selection {
 	background-color: #333;
 	color: white;
+}
+
+.fancy-shadow {
+	box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.08), 0 10px 20px -8px rgba(0, 0, 0, 0.04);
+	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fancy-shadow:hover {
+	box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.12);
+	transform: translateY(-5px);
+}
+
+/* Performance Optimizations */
+section {
+	content-visibility: auto;
+	contain-intrinsic-size: 0 800px;
+}
+
+#profile {
+	content-visibility: visible; /* Ensure hero is always rendered immediately */
+}
+
+.profile-in-co, 
+.about-image-co, 
+.project-card,
+.bg-blob,
+.icon {
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+}
+
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbar - all browsers */
+::-webkit-scrollbar {
+	display: none;
+}
+
+* {
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE/Edge */
 }
 

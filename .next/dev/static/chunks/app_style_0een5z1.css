@@ -85,6 +85,7 @@
     --blur-sm: 8px;
     --blur-md: 12px;
     --blur-lg: 16px;
+    --aspect-video: 16 / 9;
     --default-transition-duration: .15s;
     --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     --default-font-family: var(--font-sans);
@@ -514,6 +515,10 @@
     display: none;
   }
 
+  .aspect-video {
+    aspect-ratio: var(--aspect-video);
+  }
+
   .h-0\.5 {
     height: calc(var(--spacing) * .5);
   }
@@ -866,6 +871,10 @@
     padding-block: calc(var(--spacing) * 12);
   }
 
+  .pt-10 {
+    padding-top: calc(var(--spacing) * 10);
+  }
+
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
   }
@@ -1068,6 +1077,15 @@
     .group-hover\:translate-x-1:is(:where(.group):hover *) {
       --tw-translate-x: calc(var(--spacing) * 1);
       translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
+
+  @media (hover: hover) {
+    .group-hover\:scale-110:is(:where(.group):hover *) {
+      --tw-scale-x: 110%;
+      --tw-scale-y: 110%;
+      --tw-scale-z: 110%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
     }
   }
 
@@ -1343,6 +1361,27 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: Poppins, sans-serif;
+  scroll-behavior: auto !important;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 .bg-blob {
@@ -1409,6 +1448,36 @@ html, body {
 ::selection {
   color: #fff;
   background-color: #333;
+}
+
+.fancy-shadow {
+  transition: all .5s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0 20px 50px -12px #00000014, 0 10px 20px -8px #0000000a;
+}
+
+.fancy-shadow:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px -12px #0000001f;
+}
+
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 800px;
+}
+
+#profile {
+  content-visibility: visible;
+}
+
+.profile-in-co, .about-image-co, .project-card, .bg-blob, .icon {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @property --tw-translate-x {

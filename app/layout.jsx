@@ -47,7 +47,20 @@ export const metadata = {
   metadataBase: new URL('https://www.rihadjahanopu.com'),
 };
 
-import './style.css';
+import { Poppins, JetBrains_Mono } from "next/font/google";
+import "./style.css";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-poppins",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["100", "500"],
+  variable: "--font-jetbrains",
+});
 
 export default function RootLayout({ children }) {
   const jsonLd = {
@@ -106,12 +119,9 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${poppins.variable} ${jetbrainsMono.variable}`}>
       <head>
         <meta name="theme-color" content="#fafafa" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=JetBrains+Mono:wght@100;500&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
