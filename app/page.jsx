@@ -232,9 +232,9 @@ export default function Home() {
             <motion.img 
               src="/assets/daynamikrihad.svg" 
               alt="Loading logo" 
-              className="w-24 mb-5"
-              animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="w-40 md:w-56 mb-8"
+              animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
             <motion.div className="flex gap-1">
               {["L", "O", "A", "D", "I", "N", "G", ".", ".", "."].map((letter, i) => (

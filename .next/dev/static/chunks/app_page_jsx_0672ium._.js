@@ -333,21 +333,21 @@ function Home() {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].img, {
                             src: "/assets/daynamikrihad.svg",
                             alt: "Loading logo",
-                            className: "w-24 mb-5",
+                            className: "w-40 md:w-56 mb-8",
                             animate: {
                                 scale: [
                                     1,
-                                    1.2,
+                                    1.1,
                                     1
                                 ],
                                 opacity: [
-                                    0.5,
+                                    0.6,
                                     1,
-                                    0.5
+                                    0.6
                                 ]
                             },
                             transition: {
-                                duration: 1.5,
+                                duration: 2,
                                 repeat: Infinity,
                                 ease: "easeInOut"
                             }

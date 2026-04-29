@@ -1336,6 +1336,12 @@
   }
 
   @media (min-width: 48rem) {
+    .md\:w-56 {
+      width: calc(var(--spacing) * 56);
+    }
+  }
+
+  @media (min-width: 48rem) {
     .md\:w-auto {
       width: auto;
     }
@@ -1462,7 +1468,6 @@
 }
 
 html, body {
-  scroll-behavior: smooth;
   box-sizing: border-box;
   background-color: #fafafa;
   margin: 0;
