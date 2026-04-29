@@ -557,6 +557,10 @@
     height: 280px;
   }
 
+  .h-\[300px\] {
+    height: 300px;
+  }
+
   .h-\[350px\] {
     height: 350px;
   }
@@ -627,6 +631,10 @@
 
   .w-\[280px\] {
     width: 280px;
+  }
+
+  .w-\[300px\] {
+    width: 300px;
   }
 
   .w-\[350px\] {
@@ -1322,8 +1330,20 @@
   }
 
   @media (min-width: 40rem) {
+    .sm\:h-\[400px\] {
+      height: 400px;
+    }
+  }
+
+  @media (min-width: 40rem) {
     .sm\:w-\[350px\] {
       width: 350px;
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .sm\:w-\[400px\] {
+      width: 400px;
     }
   }
 

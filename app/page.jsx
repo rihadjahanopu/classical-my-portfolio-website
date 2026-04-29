@@ -160,15 +160,33 @@ export default function Home() {
 			});
 
 			// Parallax Effect for Profile Image
-			gsap.to(".profile-in-co", {
-				scrollTrigger: {
-					trigger: "#profile",
-					start: "top top",
-					end: "bottom top",
-					scrub: true,
-				},
-				y: 100,
-				scale: 0.95,
+			let mm = gsap.matchMedia();
+			mm.add("(min-width: 1024px)", () => {
+				// Desktop: subtle scale and movement
+				gsap.to(".profile-in-co", {
+					scrollTrigger: {
+						trigger: "#profile",
+						start: "top top",
+						end: "bottom top",
+						scrub: true,
+					},
+					y: 100,
+					scale: 0.95,
+				});
+			});
+
+			mm.add("(max-width: 1023px)", () => {
+				// Mobile/Tablet: Keep main size (scale: 1) and less movement
+				gsap.to(".profile-in-co", {
+					scrollTrigger: {
+						trigger: "#profile",
+						start: "top top",
+						end: "bottom top",
+						scrub: true,
+					},
+					y: 40,
+					scale: 1,
+				});
 			});
 
 			// Parallax Effect for About Image
@@ -379,9 +397,12 @@ export default function Home() {
 
 				<motion.section
 					id="profile"
-					style={{ y: heroY, opacity: heroOpacity }}
+					style={{ 
+						y: heroY, 
+						opacity: heroOpacity 
+					}}
 					className="flex flex-col lg:flex-row justify-center lg:gap-20 items-center min-h-screen pt-20 lg:pt-32 scroll-mt-32">
-					<motion.div className="flex w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[500px] lg:h-[500px] perspective-[1000px] section__pic-container">
+					<motion.div className="flex w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] perspective-[1000px] section__pic-container">
 						<motion.img
 							src="/assets/rihadprofile.jpg"
 							alt="Rihad Jahan Opu"
