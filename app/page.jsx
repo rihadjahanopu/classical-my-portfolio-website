@@ -380,8 +380,8 @@ export default function Home() {
 				<motion.section
 					id="profile"
 					style={{ y: heroY, opacity: heroOpacity }}
-					className="flex flex-col lg:flex-row justify-center lg:gap-20 items-center min-h-screen pt-32 scroll-mt-32">
-					<motion.div className="flex w-[350px] h-[350px] lg:w-[500px] lg:h-[500px] perspective-[1000px] section__pic-container">
+					className="flex flex-col lg:flex-row justify-center lg:gap-20 items-center min-h-screen pt-20 lg:pt-32 scroll-mt-32">
+					<motion.div className="flex w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[500px] lg:h-[500px] perspective-[1000px] section__pic-container">
 						<motion.img
 							src="/assets/rihadprofile.jpg"
 							alt="Rihad Jahan Opu"
