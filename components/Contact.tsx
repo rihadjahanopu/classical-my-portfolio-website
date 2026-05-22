@@ -30,7 +30,9 @@ export default function Contact() {
 					whileHover={{ scale: 1.02, translateY: -5 }}
 					whileTap={{ scale: 0.98 }}
 					className="flex items-center gap-4 cursor-pointer group bg-white border border-gray-200 rounded-2xl py-4 px-6 shadow-sm hover:shadow-md transition-all duration-300 w-full md:w-auto"
-					onClick={() => (window.location.href = "mailto:itrihad@gmail.com")}>
+					onClick={() =>
+						(window.location.href = "mailto:rihad@rihadjahanopu.com")
+					}>
 					<div className="bg-gray-50 p-2 rounded-xl border border-gray-100 group-hover:bg-blue-50 transition-colors duration-300">
 						<Image
 							src="/assets/email.png"
@@ -41,7 +43,7 @@ export default function Contact() {
 						/>
 					</div>
 					<p className="text-base md:text-lg font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
-						itrihad@gmail.com
+						rihad@rihadjahanopu.com
 					</p>
 				</motion.div>
 
