@@ -2,6 +2,7 @@
 
 import { motion, MotionValue } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 interface HeroProps {
 	heroY: MotionValue<number>;
@@ -81,6 +82,7 @@ export default function Hero({ heroY, heroOpacity }: HeroProps) {
 							(window.location.href = "https://github.com/rihadjahanopu")
 						}
 					/>
+
 					<a
 						href="/apk/Rihad.apk"
 						download="Rihad.apk">
@@ -93,8 +95,15 @@ export default function Hero({ heroY, heroOpacity }: HeroProps) {
 						/>
 					</a>
 				</div>
+
+				<div className="mt-6">
+					<Link
+						className="text-sm text-gray-600 px-2 py-2 border rounded-full shadow-lg hover:text-white hover:bg-gray-950 hover:border-transparent"
+						href={"mailto:rihad@rihadjahanopu.com"}>
+						rihad@rihadjahanopu.com
+					</Link>
+				</div>
 			</div>
 		</motion.section>
 	);
 }
-
