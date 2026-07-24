@@ -1,28 +1,19 @@
 "use client";
 
-import { motion, MotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-interface HeroProps {
-	heroY: MotionValue<number>;
-	heroOpacity: MotionValue<number>;
-}
-
-export default function Hero({ heroY, heroOpacity }: HeroProps) {
+export default function Hero() {
 	const btnClass =
 		"font-semibold transition-all duration-300 p-3 w-32 rounded-full border-2 border-[#353535] flex justify-center items-center cursor-pointer text-sm";
 
 	return (
-		<motion.section
+		<section
 			id="profile"
-			style={{
-				y: heroY,
-				opacity: heroOpacity,
-			}}
-			className="flex flex-col lg:flex-row justify-center lg:gap-20 items-center min-h-screen pt-10 lg:pt-32 scroll-mt-32">
-			<motion.div className="flex w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] perspective-[1000px] section__pic-container">
-				<motion.div className="w-full h-full relative cursor-pointer profile-in-co">
+			className="hero-wrapper flex flex-col lg:flex-row justify-center lg:gap-20 items-center min-h-screen pt-10 lg:pt-32 scroll-mt-32">
+			<div className="flex w-75 h-75 sm:w-100 sm:h-100 lg:w-125 lg:h-125 perspective-[1000px] section__pic-container">
+				<div className="w-full h-full relative cursor-pointer profile-in-co">
 					<Image
 						src="/assets/rihadprofile.jpg"
 						alt="Rihad Jahan Opu"
@@ -31,8 +22,8 @@ export default function Hero({ heroY, heroOpacity }: HeroProps) {
 						className="object-cover rounded-full"
 						sizes="(max-width: 768px) 300px, (max-width: 1024px) 400px, 500px"
 					/>
-				</motion.div>
-			</motion.div>
+				</div>
+			</div>
 			<div className="text-center mt-10 lg:mt-0 section__text">
 				<p className="text-gray-600 font-semibold text-lg hero-p1">
 					Hello, I'm
@@ -104,6 +95,6 @@ export default function Hero({ heroY, heroOpacity }: HeroProps) {
 					</Link>
 				</div>
 			</div>
-		</motion.section>
+		</section>
 	);
 }

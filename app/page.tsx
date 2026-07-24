@@ -1,22 +1,21 @@
 "use client";
 
 import { useGSAP } from "@gsap/react";
-import { useScroll, useTransform } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { useEffect, useRef, useState } from "react";
 
 // Component Imports
-import Preloader from "../components/Preloader";
-import Background from "../components/Background";
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
 import About from "../components/About";
-import Experience from "../components/Experience";
-import Projects from "../components/Projects";
+import Background from "../components/Background";
 import Contact from "../components/Contact";
+import Experience from "../components/Experience";
 import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import Navbar from "../components/Navbar";
+import Preloader from "../components/Preloader";
+import ProjectsPage from "./projects/page";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,10 +23,6 @@ export default function Home() {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const container = useRef<HTMLDivElement>(null);
-
-	const { scrollY } = useScroll();
-	const heroY = useTransform(scrollY, [0, 1000], [0, 350]);
-	const heroOpacity = useTransform(scrollY, [0, 800], [1, 0]);
 
 	useEffect(() => {
 		// 1. Initialize Lenis for smooth scrolling
@@ -41,7 +36,7 @@ export default function Home() {
 		});
 
 		// 2. Connect ScrollTrigger to Lenis
-		lenis.on("scroll", () => ScrollTrigger.update());
+		lenis.on("scroll", ScrollTrigger.update);
 		lenis.stop(); // Disable scroll during loading
 
 		// 3. Single Animation Loop (optimized)
@@ -135,22 +130,39 @@ export default function Home() {
 					"-=0.4"
 				);
 
-			// Advanced Scroll Reveal for Section Titles
-			gsap.utils.toArray<HTMLElement>(".title").forEach((title) => {
-				gsap.from(title, {
-					scrollTrigger: {
-						trigger: title,
-						start: "top 95%",
-					},
-					y: 30,
-					opacity: 0,
-					duration: 1,
-					ease: "power3.out",
-				});
+			// ✅ Hero Parallax using GSAP (Framer Motion useScroll er bodole)
+			// Hero component-e wrapper element-e id="hero" ba class="hero-wrapper" thakle adjust koro
+			const heroParallax = gsap.to(".hero-wrapper", {
+				scrollTrigger: {
+					trigger: ".hero-wrapper",
+					start: "top top",
+					end: "bottom top",
+					scrub: true,
+				},
+				y: 350,
+				opacity: 0,
+				ease: "none",
 			});
 
-			// Parallax Effect for Profile Image (y movement only, no scale)
+			// Advanced Scroll Reveal for Section Titles
+			const titleAnims = gsap.utils
+				.toArray<HTMLElement>(".title")
+				.map((title) =>
+					gsap.from(title, {
+						scrollTrigger: {
+							trigger: title,
+							start: "top 95%",
+						},
+						y: 30,
+						opacity: 0,
+						duration: 1,
+						ease: "power3.out",
+					})
+				);
+
+			// Parallax Effect for Profile Image
 			let mm = gsap.matchMedia();
+
 			mm.add("(min-width: 1024px)", () => {
 				gsap.to(".profile-in-co", {
 					scrollTrigger: {
@@ -176,7 +188,7 @@ export default function Home() {
 			});
 
 			// Parallax Effect for About Image
-			gsap.to(".about-image-co", {
+			const aboutAnim = gsap.to(".about-image-co", {
 				scrollTrigger: {
 					trigger: "#about",
 					start: "top bottom",
@@ -187,9 +199,9 @@ export default function Home() {
 			});
 
 			// Staggered Reveal for Experience Articles
-			gsap.utils
+			const expAnims = gsap.utils
 				.toArray<HTMLElement>(".experience-details-container")
-				.forEach((container) => {
+				.map((container) =>
 					gsap.from(container.querySelectorAll("article"), {
 						scrollTrigger: {
 							trigger: container,
@@ -200,32 +212,43 @@ export default function Home() {
 						duration: 0.5,
 						stagger: 0.05,
 						ease: "power2.out",
-					});
-				});
+					})
+				);
 
 			// ScrollTrigger Advanced Magic for Projects
-			gsap.utils.toArray<HTMLElement>(".project-card").forEach((card) => {
-				gsap.from(card, {
-					scrollTrigger: {
-						trigger: card,
-						start: "top 90%",
-						toggleActions: "play none none reverse",
-					},
-					y: 50,
-					opacity: 0,
-					scale: 0.95,
-					duration: 0.6,
-					ease: "power2.out",
-				});
-			});
+			const projectAnims = gsap.utils
+				.toArray<HTMLElement>(".project-card")
+				.map((card) =>
+					gsap.from(card, {
+						scrollTrigger: {
+							trigger: card,
+							start: "top 90%",
+							toggleActions: "play none none reverse",
+						},
+						y: 50,
+						opacity: 0,
+						scale: 0.95,
+						duration: 0.6,
+						ease: "power2.out",
+					})
+				);
 
 			// Ensure everything is calculated correctly after loader exit
 			const refreshTimer = setTimeout(() => {
 				ScrollTrigger.refresh();
 			}, 1000);
 
+			// ✅ CRITICAL FIX: Full cleanup
 			return () => {
 				clearTimeout(refreshTimer);
+				tl.kill();
+				heroParallax.kill();
+				mm.revert();
+				titleAnims.forEach((anim) => anim.scrollTrigger?.kill());
+				aboutAnim.scrollTrigger?.kill();
+				expAnims.forEach((anim) => anim.scrollTrigger?.kill());
+				projectAnims.forEach((anim) => anim.scrollTrigger?.kill());
+				ScrollTrigger.getAll().forEach((st) => st.kill());
 			};
 		},
 		{ scope: container, dependencies: [isLoading] }
@@ -247,13 +270,10 @@ export default function Home() {
 					menuOpen={menuOpen}
 					toggleMenu={toggleMenu}
 				/>
-				<Hero
-					heroY={heroY}
-					heroOpacity={heroOpacity}
-				/>
+				<Hero />
 				<About />
 				<Experience />
-				<Projects />
+				<ProjectsPage />
 				<Contact />
 				<Footer />
 			</main>
