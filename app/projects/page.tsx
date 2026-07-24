@@ -4,7 +4,9 @@ import { projectsData } from "./data";
 
 export default function ProjectsPage() {
 	return (
-		<section className="min-h-screen pt-20 pb-16 px-4">
+		<section
+			className="min-h-screen pt-20 pb-16 px-4"
+			id="projects">
 			<p className="text-center text-gray-600 font-semibold">
 				Browse My Recent
 			</p>
