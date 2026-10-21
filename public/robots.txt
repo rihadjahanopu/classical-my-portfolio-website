@@ -1,4 +1,25 @@
 User-agent: *
-Disallow: 
+Allow: /
 Disallow: /cgi-bin/
-Sitemap: https://rihadjahanopu.com/sitemap.xml
+
+# Google Gemini & Vertex AI Crawler
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# OpenAI / ChatGPT Search Bot
+User-agent: GPTBot
+Allow: /
+
+# Perplexity AI Bot
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic Claude Bot
+User-agent: ClaudeBot
+Allow: /
+
+# Sitemaps & LLM Context
+Sitemap: https://www.rihadjahanopu.com/sitemap.xml
