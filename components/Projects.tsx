@@ -1,79 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-
-// প্রজেক্ট ডাটার টাইপ ডেফিনিশন
-interface Project {
-	id: number;
-	title: string;
-	image: string;
-	github: string;
-	liveDemo: string;
-	techStack: string[];
-	description: string;
-	challenges: string[];
-	futurePlans: string[];
-}
-
-// আপনার প্রজেক্টসমূহের ডাটা
-const projectsData: Project[] = [
-	{
-		id: 1,
-		title: "Project One",
-		image: "/assets/project-1.png",
-		github: "https://github.com/your-username/project-1",
-		liveDemo: "https://project-1-demo.com",
-		techStack: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB"],
-		description:
-			"An interactive full-stack web application designed for seamlessly managing daily tasks and projects.",
-		challenges: [
-			"Handling real-time state synchronization across multiple devices.",
-			"Optimizing dynamic images for faster loading speeds.",
-		],
-		futurePlans: [
-			"Add AI-assisted task auto-categorization.",
-			"Implement team collaboration features with web sockets.",
-		],
-	},
-	{
-		id: 2,
-		title: "Project Two",
-		image: "/assets/project-2.png",
-		github: "https://github.com/your-username/project-2",
-		liveDemo: "https://project-2-demo.com",
-		techStack: ["React", "Redux Toolkit", "Node.js", "Express"],
-		description:
-			"An e-commerce platform offering a smooth checkout experience and real-time inventory updates.",
-		challenges: [
-			"Integrating complex payment gateways securely.",
-			"Structuring Redux store to manage cart state efficiently.",
-		],
-		futurePlans: [
-			"Integrate dark mode support.",
-			"Implement multi-currency payment options.",
-		],
-	},
-	{
-		id: 3,
-		title: "Project Three",
-		image: "/assets/project-3.png",
-		github: "https://github.com/your-username/project-3",
-		liveDemo: "https://project-3-demo.com",
-		techStack: ["Next.js", "Tailwind CSS", "Firebase"],
-		description:
-			"A blogging dashboard with rich text editing, user authorization, and dynamic rendering.",
-		challenges: [
-			"Configuring complex Firebase security rules.",
-			"Optimizing SEO for dynamically generated blog routes.",
-		],
-		futurePlans: [
-			"Add automated newsletter emails for new posts.",
-			"Include a comment rating and moderation dashboard.",
-		],
-	},
-];
+import { projectsData, type Project } from "../app/projects/data";
 
 export default function Projects() {
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -113,36 +44,45 @@ export default function Projects() {
 			<h2 className="text-5xl text-center font-bold mb-10 title">Projects</h2>
 
 			{/* Projects Cards Grid */}
-			<div className="flex flex-col lg:flex-row gap-8 justify-center max-w-6xl mx-auto">
+			<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
 				{projectsData.map((project) => (
-					<div
-						className="flex-1 bg-[#fafafa] border border-gray-300 rounded-3xl p-6 text-center project-card shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col justify-between"
-						key={project.id}>
+					<article
+						className="bg-[#fafafa] border border-gray-300 rounded-3xl p-6 text-center project-card shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col justify-between"
+						key={project.id}
+						aria-label={project.title}>
 						<div>
-							<div className="overflow-hidden rounded-2xl mb-6 relative aspect-video">
+							<div className="overflow-hidden rounded-2xl mb-5 relative aspect-video">
 								<Image
 									src={project.image}
-									alt={project.title}
+									alt={project.imageAlt || `${project.title} Preview`}
 									fill
 									className="object-cover transition-transform duration-500 group-hover:scale-110"
-									sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+									sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
 								/>
+								{project.isOpenSource && (
+									<span className="absolute top-3 right-3 bg-emerald-600/90 text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full shadow backdrop-blur-sm tracking-wide">
+										Open Source
+									</span>
+								)}
 							</div>
 
-							<h3 className="text-2xl font-bold text-black mb-4">
+							<h3 className="text-2xl font-bold text-black mb-2">
 								{project.title}
 							</h3>
+							<p className="text-gray-600 text-sm mb-4 line-clamp-2 text-center px-1">
+								{project.description}
+							</p>
 						</div>
 
 						{/* View More Button */}
-						<div className="flex justify-center mt-4">
+						<div className="flex justify-center mt-2">
 							<button
 								className={`${btnClass} w-full text-black bg-transparent`}
 								onClick={() => setSelectedProject(project)}>
 								View More / Details
 							</button>
 						</div>
-					</div>
+					</article>
 				))}
 			</div>
 
@@ -155,7 +95,7 @@ export default function Projects() {
 						onClick={() => setSelectedProject(null)}>
 						{/* Modal Content Box (Scrollable with Hidden Scrollbar) */}
 						<div
-							className="bg-white rounded-3xl max-w-2xl w-full p-6 md:p-8 relative max-h-[85vh] overflow-y-auto shadow-2xl my-auto animate-in fade-in zoom-in duration-200 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+							className="bg-white rounded-3xl max-w-2xl w-full p-6 md:p-8 relative max-h-[88vh] overflow-y-auto shadow-2xl my-auto animate-in fade-in zoom-in duration-200 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
 							onClick={(e) => e.stopPropagation()}>
 							{/* Top Right Close Button */}
 							<button
@@ -165,15 +105,28 @@ export default function Projects() {
 								✕
 							</button>
 
-							<h3 className="text-3xl font-bold text-black mb-2">
-								{selectedProject.title}
-							</h3>
+							{/* Title & Badges */}
+							<div className="flex flex-wrap items-center gap-3 mb-2 pr-10">
+								<h3 className="text-3xl font-bold text-black">
+									{selectedProject.title}
+								</h3>
+								{selectedProject.isOpenSource && (
+									<span className="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-1 rounded-full border border-emerald-300">
+										Open Source
+									</span>
+								)}
+								{selectedProject.license && (
+									<span className="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full border border-gray-300">
+										{selectedProject.license}
+									</span>
+								)}
+							</div>
 
 							{/* Modal Image */}
-							<div className="relative aspect-video w-full rounded-xl overflow-hidden my-4 border border-gray-200">
+							<div className="relative aspect-video w-full rounded-xl overflow-hidden my-4 border border-gray-200 shadow-sm">
 								<Image
 									src={selectedProject.image}
-									alt={selectedProject.title}
+									alt={selectedProject.imageAlt || selectedProject.title}
 									fill
 									className="object-cover"
 								/>
@@ -183,6 +136,26 @@ export default function Projects() {
 							<p className="text-gray-700 mb-6 text-base leading-relaxed text-left">
 								{selectedProject.description}
 							</p>
+
+							{/* Highlights (if any) */}
+							{selectedProject.highlights &&
+								selectedProject.highlights.length > 0 && (
+									<div className="mb-6 p-4 bg-gray-50 border border-gray-200 rounded-2xl text-left">
+										<h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">
+											Key Highlights & Performance:
+										</h4>
+										<div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+											{selectedProject.highlights.map((item, index) => (
+												<div
+													key={index}
+													className="flex items-start gap-2 text-xs font-medium text-gray-800 bg-white p-2.5 rounded-xl border border-gray-200 shadow-2xs">
+													<span className="text-emerald-600 font-bold">✓</span>
+													<span>{item}</span>
+												</div>
+											))}
+										</div>
+									</div>
+								)}
 
 							{/* Tech Stack */}
 							<div className="mb-6 text-left">
@@ -200,14 +173,37 @@ export default function Projects() {
 								</div>
 							</div>
 
+							{/* Key Features (if any) */}
+							{selectedProject.features &&
+								selectedProject.features.length > 0 && (
+									<div className="mb-6 text-left">
+										<h4 className="text-lg font-semibold mb-2 text-black">
+											Key Features & Capabilities:
+										</h4>
+										<ul className="list-disc list-inside text-gray-600 text-sm space-y-1.5">
+											{selectedProject.features.map((feature, index) => (
+												<li
+													key={index}
+													className="leading-relaxed">
+													{feature}
+												</li>
+											))}
+										</ul>
+									</div>
+								)}
+
 							{/* Challenges Faced */}
 							<div className="mb-6 text-left">
 								<h4 className="text-lg font-semibold mb-2 text-black">
-									Challenges Faced:
+									Technical Challenges Faced:
 								</h4>
-								<ul className="list-disc list-inside text-gray-600 text-sm space-y-1">
+								<ul className="list-disc list-inside text-gray-600 text-sm space-y-1.5">
 									{selectedProject.challenges.map((challenge, index) => (
-										<li key={index}>{challenge}</li>
+										<li
+											key={index}
+											className="leading-relaxed">
+											{challenge}
+										</li>
 									))}
 								</ul>
 							</div>
@@ -215,11 +211,15 @@ export default function Projects() {
 							{/* Future Plans */}
 							<div className="mb-6 text-left">
 								<h4 className="text-lg font-semibold mb-2 text-black">
-									Future Plans & Improvements:
+									Future Plans & Roadmap:
 								</h4>
-								<ul className="list-disc list-inside text-gray-600 text-sm space-y-1">
+								<ul className="list-disc list-inside text-gray-600 text-sm space-y-1.5">
 									{selectedProject.futurePlans.map((plan, index) => (
-										<li key={index}>{plan}</li>
+										<li
+											key={index}
+											className="leading-relaxed">
+											{plan}
+										</li>
 									))}
 								</ul>
 							</div>
@@ -232,7 +232,7 @@ export default function Projects() {
 										target="_blank"
 										rel="noopener noreferrer"
 										className={`${btnClass} text-white bg-black hover:bg-gray-800`}>
-										Live Project
+										Live Website / Demo
 									</a>
 									<a
 										href={selectedProject.github}
@@ -241,6 +241,11 @@ export default function Projects() {
 										className={`${btnClass} text-black bg-transparent`}>
 										GitHub Repository
 									</a>
+									<Link
+										href={`/projects/${selectedProject.id}`}
+										className={`${btnClass} text-gray-700 bg-gray-100 hover:bg-gray-200 border-gray-200`}>
+										Full Case Study →
+									</Link>
 								</div>
 
 								{/* Bottom Close Button */}
