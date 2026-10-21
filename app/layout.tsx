@@ -1,7 +1,11 @@
 import { Metadata, Viewport } from "next";
+import { Poppins, JetBrains_Mono } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "../components/ThemeProvider";
+import CustomCursor from "../components/CustomCursor";
 
 export const viewport: Viewport = {
-  themeColor: '#fafafa',
+  themeColor: '#0f111a',
 };
 
 export const metadata: Metadata = {
@@ -49,9 +53,6 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.rihadjahanopu.com'),
 };
 
-import { Poppins, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
-
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
@@ -97,14 +98,9 @@ export default function RootLayout({
       "https://g.co/kgs/wXkaCvc"
     ],
     "gender": "Male",
-    "email": "mailto:itrihad@gmail.com",
+    "email": "mailto:rihad@rihadjahanopu.com",
     "nationality": "Bangladeshi",
-    "jobTitle": "Founder & Full-Stack Web Developer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Gladepik",
-      "url": "https://gladepik.com"
-    },
+    "jobTitle": "Systems & Full-Stack Web Developer",
     "birthPlace": {
       "@type": "Place",
       "name": "Sunamganj, Bangladesh",
@@ -125,15 +121,41 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${poppins.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="en"
+      data-theme="tokyo-night"
+      className={`dark ${poppins.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#fafafa" />
+        <meta name="theme-color" content="#0f111a" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem("preferred-theme") || "tokyo-night";
+                  document.documentElement.setAttribute("data-theme", saved);
+                  if (saved === "clean-light") {
+                    document.documentElement.classList.remove("dark");
+                  } else {
+                    document.documentElement.classList.add("dark");
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body className="bg-[var(--bg-primary)] text-[var(--text-primary)] min-h-screen transition-colors duration-300">
+        <ThemeProvider>
+          <CustomCursor />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

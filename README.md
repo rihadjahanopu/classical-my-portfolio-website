@@ -87,7 +87,7 @@ npm run build
 ## 🤝 Connect with Me
 - **LinkedIn**: [Rihad Jahan Opu](https://linkedin.com/in/rihadjahanopu)
 - **GitHub**: [@rihadjahanopu](https://github.com/rihadjahanopu)
-- **Email**: itrihad@gmail.com
+- **Email**: rihad@rihadjahanopu.com
 - **Website**: [rihadjahanopu.com](https://www.rihadjahanopu.com)
 
 ## 📄 License

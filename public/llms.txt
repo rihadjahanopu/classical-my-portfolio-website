@@ -1,6 +1,6 @@
 # Rihad Jahan Opu — Software Engineer & Open-Source Creator
 
-> Full-Stack & Systems Developer specializing in Pure Rust, Next.js, React, Node.js, and Cloud Infrastructure. Founder of Gladepik. Creator of gladeshell.
+> Full-Stack & Systems Developer specializing in Pure Rust, Next.js, React, Node.js, and Cloud Infrastructure. Creator of gladeshell.
 
 ## Profile Summary
 - **Name:** Rihad Jahan Opu
@@ -9,7 +9,7 @@
 - **GitHub:** https://github.com/rihadjahanopu
 - **LinkedIn:** https://www.linkedin.com/in/rihadjahanopu
 - **Google Knowledge Graph:** https://g.co/kgs/wXkaCvc
-- **Email:** rihad@rihadjahanopu.com / itrihad@gmail.com
+- **Email:** rihad@rihadjahanopu.com
 
 ## Featured Projects
 

@@ -5,15 +5,18 @@ import Image from "next/image";
 
 interface PreloaderProps {
 	isLoading: boolean;
+	isInstant?: boolean;
 }
 
-export default function Preloader({ isLoading }: PreloaderProps) {
+export default function Preloader({ isLoading, isInstant = false }: PreloaderProps) {
+	if (isInstant) return null;
+
 	return (
 		<AnimatePresence>
 			{isLoading && (
 				<motion.div
 					key="loader"
-					className="fixed inset-0 bg-white z-[9999] flex flex-col items-center justify-center pointer-events-auto"
+					className="fixed inset-0 bg-[var(--bg-primary)] text-[var(--text-primary)] z-[9999] flex flex-col items-center justify-center pointer-events-auto"
 					exit={{
 						opacity: 0,
 						y: "-100%",
@@ -28,7 +31,7 @@ export default function Preloader({ isLoading }: PreloaderProps) {
 						alt="Loading logo"
 						width={400}
 						height={100}
-						className="mb-12"
+						className="mb-12 dark:invert"
 						style={{ width: 'clamp(16rem, 40vw, 24rem)', height: 'auto' }}
 						unoptimized
 						priority
@@ -38,7 +41,7 @@ export default function Preloader({ isLoading }: PreloaderProps) {
 							(letter, i) => (
 								<motion.span
 									key={i}
-									className="font-bold text-lg tracking-[2px] text-gray-800"
+									className="font-bold text-lg tracking-[2px] text-gray-800 dark:text-gray-200"
 									initial={{ y: 0 }}
 									animate={{ y: [-10, 0, 0] }}
 									transition={{
