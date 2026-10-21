@@ -25,11 +25,20 @@ export default function GladeshellTerminal() {
 			),
 		},
 	]);
-	const terminalBottomRef = useRef<HTMLDivElement>(null);
+	const outputContainerRef = useRef<HTMLDivElement>(null);
+	const isFirstMount = useRef(true);
 	const { playClick, showToast } = useTheme();
 
 	useEffect(() => {
-		terminalBottomRef.current?.scrollIntoView({ behavior: "smooth" });
+		// Do not scroll on initial mount so page stays at top (Home/Hero)
+		if (isFirstMount.current) {
+			isFirstMount.current = false;
+			return;
+		}
+		// Only scroll internal terminal container when user runs commands
+		if (outputContainerRef.current) {
+			outputContainerRef.current.scrollTop = outputContainerRef.current.scrollHeight;
+		}
 	}, [history]);
 
 	const executeCommand = (cmd: string) => {
@@ -128,7 +137,9 @@ export default function GladeshellTerminal() {
 			</div>
 
 			{/* Terminal Output Area */}
-			<div className="p-4 sm:p-5 min-h-[160px] max-h-64 sm:max-h-72 overflow-y-auto space-y-3 [scrollbar-width:none] break-words text-left">
+			<div
+				ref={outputContainerRef}
+				className="p-4 sm:p-5 min-h-[160px] max-h-64 sm:max-h-72 overflow-y-auto space-y-3 [scrollbar-width:none] break-words text-left">
 				{history.map((item, idx) => (
 					<div key={idx} className="space-y-1">
 						<div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs text-gray-400">
@@ -139,7 +150,6 @@ export default function GladeshellTerminal() {
 						<div className="pl-3 break-words text-gray-200">{item.output}</div>
 					</div>
 				))}
-				<div ref={terminalBottomRef} />
 			</div>
 
 			{/* Quick Command Pills */}

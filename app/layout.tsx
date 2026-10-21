@@ -1,4 +1,5 @@
 import { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
@@ -127,21 +128,20 @@ export default function RootLayout({
       className={`dark ${poppins.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#0f111a" />
-        <script
+        <Script
+          id="theme-initializer"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              (function() {
-                try {
-                  var saved = localStorage.getItem("preferred-theme") || "tokyo-night";
-                  document.documentElement.setAttribute("data-theme", saved);
-                  if (saved === "clean-light") {
-                    document.documentElement.classList.remove("dark");
-                  } else {
-                    document.documentElement.classList.add("dark");
-                  }
-                } catch(e) {}
-              })();
+              try {
+                var saved = localStorage.getItem("preferred-theme") || "tokyo-night";
+                document.documentElement.setAttribute("data-theme", saved);
+                if (saved === "clean-light") {
+                  document.documentElement.classList.remove("dark");
+                } else {
+                  document.documentElement.classList.add("dark");
+                }
+              } catch(e) {}
             `,
           }}
         />

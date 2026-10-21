@@ -63,6 +63,20 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 				setSoundEnabled(savedSound === "true");
 			}
 		} catch {}
+
+		// Automatically unregister stale service workers and wipe cache storage during local development
+		if (process.env.NODE_ENV === "development" && typeof window !== "undefined") {
+			if ("serviceWorker" in navigator) {
+				navigator.serviceWorker.getRegistrations().then((registrations) => {
+					registrations.forEach((r) => r.unregister());
+				});
+			}
+			if ("caches" in window) {
+				caches.keys().then((keys) => {
+					keys.forEach((k) => caches.delete(k));
+				});
+			}
+		}
 	}, []);
 
 	// Apply data-theme attribute on <html> element and update body background

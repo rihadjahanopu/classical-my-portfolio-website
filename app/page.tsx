@@ -45,6 +45,13 @@ export default function Home() {
 
 		if (typeof window !== "undefined") {
 			(window as any).__lenis = lenis;
+			if ("scrollRestoration" in history) {
+				history.scrollRestoration = "manual";
+			}
+			if (!window.location.hash) {
+				window.scrollTo(0, 0);
+				lenis.scrollTo(0, { immediate: true });
+			}
 		}
 
 		// 2. Connect ScrollTrigger to Lenis
@@ -65,6 +72,9 @@ export default function Home() {
 			setIsInstant(true);
 			setIsLoading(false);
 			lenis.start();
+			if (!window.location.hash) {
+				lenis.scrollTo(0, { immediate: true });
+			}
 		} else {
 			lenis.stop(); // Disable scroll during initial loading
 			timer = setTimeout(() => {
@@ -75,6 +85,9 @@ export default function Home() {
 					// In case storage is restricted
 				}
 				lenis.start(); // Re-enable scroll
+				if (!window.location.hash) {
+					lenis.scrollTo(0, { immediate: true });
+				}
 			}, 1800);
 		}
 
